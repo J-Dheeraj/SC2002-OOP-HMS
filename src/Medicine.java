@@ -1,7 +1,6 @@
 /**
  * The `Medicine` class represents a pharmaceutical product in the inventory,
- * including its
- * stock levels and low-stock alert threshold.
+ * including its stock levels and low-stock alert threshold.
  */
 public class Medicine {
     private String name;
@@ -12,9 +11,9 @@ public class Medicine {
      * Constructs a `Medicine` with the specified name, initial stock, and low-stock
      * alert level.
      *
-     * @param name          the name of the medicine.
-     * @param initialStock  the initial stock level.
-     * @param lowStockAlert the low-stock alert threshold.
+     * @param name          The name of the medicine.
+     * @param initialStock  The initial stock level.
+     * @param lowStockAlert The low-stock alert threshold.
      */
     public Medicine(String name, int initialStock, int lowStockAlert) {
         this.name = name;
@@ -22,6 +21,11 @@ public class Medicine {
         this.lowStockAlert = lowStockAlert;
     }
 
+    /**
+     * Constructs a `Medicine` with the specified name and default stock levels.
+     *
+     * @param name The name of the medicine.
+     */
     public Medicine(String name) {
         this.name = name;
     }
@@ -29,7 +33,7 @@ public class Medicine {
     /**
      * Updates the stock level of the medicine.
      *
-     * @param quantity the quantity to add (positive) or subtract (negative).
+     * @param quantity The quantity to add (positive) or subtract (negative).
      */
     public void updateStock(int quantity) {
         this.currentStock += quantity;
@@ -51,7 +55,7 @@ public class Medicine {
     /**
      * Replenishes the stock by the specified quantity.
      *
-     * @param quantity the quantity to add to the stock.
+     * @param quantity The quantity to add to the stock.
      */
     public void replenishStock(int quantity) {
         if (quantity > 0) {
@@ -65,7 +69,7 @@ public class Medicine {
     /**
      * Retrieves the name of the medicine.
      *
-     * @return the name of the medicine.
+     * @return The name of the medicine.
      */
     public String getName() {
         return name;
@@ -74,7 +78,7 @@ public class Medicine {
     /**
      * Retrieves the current stock level of the medicine.
      *
-     * @return the current stock level.
+     * @return The current stock level.
      */
     public int getCurrentStock() {
         return currentStock;
@@ -83,7 +87,7 @@ public class Medicine {
     /**
      * Retrieves the low-stock alert threshold.
      *
-     * @return the low-stock alert level.
+     * @return The low-stock alert level.
      */
     public int getLowStockAlert() {
         return lowStockAlert;
@@ -92,7 +96,7 @@ public class Medicine {
     /**
      * Updates the stock level directly.
      *
-     * @param stock the new stock level.
+     * @param stock The new stock level.
      */
     public void setStock(int stock) {
         if (stock >= 0) {
@@ -105,7 +109,7 @@ public class Medicine {
     /**
      * Updates the low-stock alert level.
      *
-     * @param alertLevel the new low-stock alert level.
+     * @param alertLevel The new low-stock alert level.
      */
     public void setLowStockAlert(int alertLevel) {
         if (alertLevel >= 0) {
@@ -119,7 +123,7 @@ public class Medicine {
      * Returns a string representation of the medicine, including its name, stock
      * level, and alert threshold.
      *
-     * @return a string representation of the medicine.
+     * @return A string representation of the medicine.
      */
     @Override
     public String toString() {
