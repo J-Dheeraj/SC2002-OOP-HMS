@@ -69,8 +69,9 @@ public class Pharmacist extends User {
      * @param appointmentId the ID of the appointment.
      * @param medicineName  the name of the medicine in the prescription.
      * @param status        the new status of the prescription.
+     * @return true if the prescription status was successfully updated, false otherwise.
      */
-    public boolean  updatePrescriptionStatus(String appointmentId, String medicineName, PrescriptionStatus status) {
+    public boolean updatePrescriptionStatus(String appointmentId, String medicineName, PrescriptionStatus status) {
         AppointmentServiceFacade facade = AppointmentServiceFacade.getInstance(null, null);
         MedicineInventory inventory = MedicineInventory.getInstance("path_to_medicine_file");
 
@@ -86,8 +87,7 @@ public class Pharmacist extends User {
                 inventory.decreaseStock(medicineName);
             }
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
