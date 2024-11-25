@@ -2,11 +2,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * The `AppointmentServiceFacade` class provides a simplified interface for
- * managing
- * appointments, doctor availabilities, and patient data. It integrates multiple
- * services, including `DoctorService`, `PatientService`, `AppointmentService`,
- * and `PrescriptionService`, and follows the Singleton design pattern.
+ * The `AppointmentServiceFacade` class provides a simplified interface for managing
+ * appointments, doctor availabilities, and patient data. It integrates multiple services,
+ * including `DoctorService`, `PatientService`, `AppointmentService`, and `PrescriptionService`,
+ * and follows the Singleton design pattern.
  */
 public class AppointmentServiceFacade {
     private static AppointmentServiceFacade instance;
@@ -16,9 +15,8 @@ public class AppointmentServiceFacade {
     private PrescriptionService prescriptionService;
 
     /**
-     * Private constructor to enforce Singleton pattern.
-     * Initializes the services with the file paths to their respective data
-     * sources.
+     * Private constructor to enforce the Singleton pattern.
+     * Initializes the services with the file paths to their respective data sources.
      *
      * @param patientFilePath The file path to the patient data.
      * @param staffFilePath   The file path to the staff data.
@@ -31,8 +29,7 @@ public class AppointmentServiceFacade {
     }
 
     /**
-     * Retrieves the Singleton instance of the `AppointmentServiceFacade`,
-     * initializing it
+     * Retrieves the Singleton instance of the `AppointmentServiceFacade`, initializing it
      * with file paths if it has not been created yet.
      *
      * @param patientFilePath The file path to the patient data.
@@ -180,5 +177,4 @@ public class AppointmentServiceFacade {
     public boolean rescheduleAppointment(String appointmentID, LocalDateTime newDateTime) {
         return appointmentService.rescheduleAppointment(appointmentID, newDateTime);
     }
-
 }
