@@ -75,24 +75,23 @@ public class PharmacistMenu {
      */
     private void resetPassword() {
         String newPass = InputHandler.getStringInput("New Password: ");
-        Pharmacist p = this.pharmacist;
-        p.changePassword(newPass);
+        pharmacist.changePassword(newPass);
+        System.out.println("Password reset successfully.");
     }
 
     /**
-     * Displays the outcome of a specific appointment.
+     * Displays the outcome of all appointments.
      * 
-     * Prompts the user to enter an appointment ID, validates the input, and displays
-     * the corresponding appointment outcome if found.
+     * Calls the method to display all appointment outcomes.
      */
     private void viewAppointmentOutcome() {
-    try {
-        System.out.println("Displaying all appointment outcomes:\n");
-        outcomeRecord.displayAllAppointments(); // Call the method to display all appointments
-    } catch (Exception e) {
-        System.out.println("Error viewing appointment outcomes: " + e.getMessage());
+        try {
+            System.out.println("Displaying all appointment outcomes:\n");
+            outcomeRecord.displayAllAppointments();
+        } catch (Exception e) {
+            System.out.println("Error viewing appointment outcomes: " + e.getMessage());
+        }
     }
-}
 
     /**
      * Updates the status of a prescription.
@@ -138,10 +137,9 @@ public class PharmacistMenu {
                     return;
             }
 
-            if(pharmacist.updatePrescriptionStatus(prescriptionID, medicineName, status)){
-               // System.out.println("Prescription status updated successfully.");
-            }
-            else{
+            if (pharmacist.updatePrescriptionStatus(prescriptionID, medicineName, status)) {
+                System.out.println("Prescription status updated successfully.");
+            } else {
                 System.out.println("Prescription status not updated - please retry with valid inputs.");
             }
         } catch (Exception e) {
