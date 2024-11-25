@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The `User` class represents a user in the system with attributes such as user
- * ID,
+ * The `User` class represents a user in the system with attributes such as user ID,
  * name, role, gender, and contact information. It also manages password-related
- * operations, including first login password reset and updating the password in
- * the
+ * operations, including first login password reset and updating the password in the
  * corresponding CSV file.
  */
 public class User implements IPasswordUpdate {
@@ -30,14 +28,12 @@ public class User implements IPasswordUpdate {
      *
      * @param userID        The unique identifier for the user.
      * @param name          The name of the user.
-     * @param password      The user's password (initially set to a default value).
      * @param role          The role of the user (e.g., Patient, Doctor, Admin).
      * @param gender        The gender of the user.
      * @param contactEmail  The user's contact email.
      * @param contactNumber The user's contact number.
      */
-    public User(String userID, String name, String password, UserRole role, String gender, String contactEmail,
-            String contactNumber) {
+    public User(String userID, String name, UserRole role, String gender, String contactEmail, String contactNumber) {
         this.userID = userID;
         this.name = name;
         this.password = DEFAULT_PASSWORD;
@@ -139,31 +135,27 @@ public class User implements IPasswordUpdate {
 
     /**
      * Authenticates the user using the provided password. If the provided password
-     * matches
-     * the current password and the current password is the default password, the
-     * user is
-     * prompted to reset their password.
+     * matches the current password and the current password is the default password, the
+     * user is prompted to reset their password.
      *
-     * @param passString The password to authenticate.
+     * @param password The password to authenticate.
      * @return `true` if authentication is successful, `false` otherwise.
      */
     public boolean authenticatePassword(String password) {
         if (this.password.equals(password)) {
             if (password.equals(DEFAULT_PASSWORD)) {
-                System.out.println("");
-                System.out.println("First Login: Please reset your password!\n");
+                System.out.println("\nFirst Login: Please reset your password!");
                 String newPass = InputHandler.getStringInput("New Password: ");
                 changePassword(newPass);
             }
+            return true;
         }
-        return this.password.equals(password);
+        return false;
     }
 
     /**
-     * Changes the user's password and updates the corresponding record in the CSV
-     * file.
+     * Changes the user's password and updates the corresponding record in the CSV file.
      *
-     * @param oldPass     The current password (not used in this implementation).
      * @param newPassword The new password to set.
      */
     public void changePassword(String newPassword) {
@@ -172,8 +164,7 @@ public class User implements IPasswordUpdate {
     }
 
     /**
-     * Updates the user's password in the corresponding CSV file (patients or
-     * staff).
+     * Updates the user's password in the corresponding CSV file (patients or staff).
      */
     protected void updatePasswordInExcel() {
         String filePath = determineFilePath();
@@ -236,9 +227,11 @@ public class User implements IPasswordUpdate {
     }
 
     /**
-     * @param userID
-     * @param filePath
-     * @return boolean
+     * Checks if the given user ID is present in the specified file.
+     *
+     * @param userID   The user ID to check.
+     * @param filePath The file path to search.
+     * @return `true` if the user ID is found, `false` otherwise.
      */
     private boolean isIDInFile(String userID, String filePath) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -254,5 +247,4 @@ public class User implements IPasswordUpdate {
         }
         return false;
     }
-
 }
